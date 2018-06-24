@@ -7,7 +7,6 @@ export const PAGE_ADD_ONE = 'PAGE_ADD_ONE'
 export const SHOW_TOAST = 'SHOW_TOAST'
 export default {
   [UNSHIFT_TOPICS] (state, {tab, topics}) {
-    console.log(topics)
     state[tab].topics.unshift(...topics)
   },
   [SHIFT_TOPICS] (state, {tab, conut}) {
@@ -25,7 +24,6 @@ export default {
     state[tab].page += 1
   },
   [SHOW_TOAST] (state, {flag}) {
-    console.log('toast')
     if (flag) {
       app.$toast.loading({mask: true, message: '初始化中....'})
     } else {

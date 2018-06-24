@@ -6,7 +6,6 @@ export default {
     commit(SET_LOADING, true)
     const accesstoken = rootGetters.token
     if (!accesstoken) {
-      console.log('accesstoken', accesstoken)
       setTimeout(() => {
         commit(SET_LOADING, false)
       }, 200)

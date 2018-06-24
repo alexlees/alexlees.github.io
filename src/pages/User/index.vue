@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { Actionsheet } from 'vant'
 import Page from '@/base/Page'
 import Header from '@/components/Header'
@@ -43,6 +44,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('author', ['getUser']),
     showActions () {
       this.show = !this.show
     },
@@ -55,6 +57,10 @@ export default {
         this.$toast.fail('暂未实现')
       }
     }
+  },
+  beforeRouteUpdate (v) {
+    console.log(v)
+    // this.getUser(v.params.name)
   }
 }
 </script>

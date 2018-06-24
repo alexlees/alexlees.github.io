@@ -36,17 +36,14 @@ export default {
     ...mapActions('category', ['getTopics']),
     onRefresh () {
       this.getTopics({tab: 'share'})
-      console.log(this.$store.state.category)
       setTimeout(() => {
         this.isLoading = false
       }, 1000)
     },
     scroll (e) {
-      console.log(e)
     }
   },
   created () {
-    console.log(this.share)
     if (this.share.length === 0) {
       this.onRefresh()
     }

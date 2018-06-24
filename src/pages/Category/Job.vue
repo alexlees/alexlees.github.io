@@ -36,17 +36,14 @@ export default {
     ...mapActions('category', ['getTopics']),
     onRefresh () {
       this.getTopics({tab: 'job'})
-      console.log(this.$store.state.category)
       setTimeout(() => {
         this.isLoading = false
       }, 1000)
     },
     scroll (e) {
-      console.log(e)
     }
   },
   created () {
-    console.log(this.job)
     if (this.job.length === 0) {
       this.onRefresh()
     }

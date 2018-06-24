@@ -15,7 +15,6 @@ export function toUrl (INFO, parmas) {
       }
     }
     str = str.slice(0, -1)
-    console.log('path', path)
     return {
       url: API.BASE_URL + path + str
     }
@@ -50,7 +49,6 @@ function checkParams (INFO, params) {
       }
       // eslint-disable-next-line
       if (INFO.params[key].type !== typeof params[key] && typeof params[key] !== 'undefined') {
-        console.log(params[key])
         throw new Error(`${key} 存在类型错误`)
       }
     }
@@ -66,21 +64,18 @@ function mergeParams (INFO, params) {
     defaultParams[key] = INFO.params[key].default
   }
   Object.assign(finallyParams, defaultParams, params)
-  console.log(finallyParams)
   return finallyParams
 }
 
 export async function fetchTopics (params = {}) {
   const URL = toUrl(API.TOPICS, mergeParams(API.TOPICS, params))
-  console.log(URL)
   try {
-    console.log(URL.url)
     const res = await fetch(URL.url, {
       method: API.TOPICS.methods
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -92,7 +87,7 @@ export async function fetchTopic (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -108,7 +103,7 @@ export async function postReply (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -136,7 +131,7 @@ export async function postToken (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -148,7 +143,7 @@ export async function fetchMessage (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -160,7 +155,7 @@ export async function fetchUser (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -176,7 +171,7 @@ export async function postUpReply (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -192,7 +187,7 @@ export async function postTopicCollect (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -208,7 +203,7 @@ export async function postTopicDeCollect (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -220,6 +215,6 @@ export async function fetchUserTopicCollect (params = {}) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }

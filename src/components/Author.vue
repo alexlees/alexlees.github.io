@@ -41,10 +41,18 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
 }
 .right{
   min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.right:active{
+  background-color: #eeeeee;
+  color: #888;
 }
 .name{
   flex: 1;
@@ -53,5 +61,9 @@ export default {
   justify-content: flex-start;
   align-items: center;
   text-indent: 1em;
+}
+.name:active{
+  color: #888;
+  background-color: #eeeeee;
 }
 </style>

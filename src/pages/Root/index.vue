@@ -5,7 +5,7 @@
         <router-view :class="$style.flex"></router-view>
       </keep-alive>
     </div>
-    <v-tabbar v-model="index">
+    <v-tabbar>
       <v-tabbar-item to="/">
         <template slot="icon" slot-scope="props">
           <v-icon icon="home" :active="props.active"></v-icon>
@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import Tabbar from '@/components/Tabbar/Tabbar'
-import TabbarItem from '@/components/Tabbar/TabbarItem'
+import Tabbar from '@/base/Tabbar/Tabbar'
+import TabbarItem from '@/base/Tabbar/TabbarItem'
 import Icon from '@/base/Icon'
 
 export default {
@@ -45,11 +45,6 @@ export default {
     [Icon.name]: Icon,
     [Tabbar.name]: Tabbar,
     [TabbarItem.name]: TabbarItem
-  },
-  data () {
-    return {
-      index: 0
-    }
   }
 }
 </script>

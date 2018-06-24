@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     goGithub () {
-      window.location.href = 'https://github.com/alexlees/CNode'
+      window.location.href = 'https://github.com/alexlees/alexlees.github.io'
     },
     scroll (e) {
       if (!this.target) {

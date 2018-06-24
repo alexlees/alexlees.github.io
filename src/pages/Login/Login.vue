@@ -1,11 +1,14 @@
 <template>
   <div :class="$style.login">
-    <input type="text" v-model="value" placeholder="请输入accesstoken">
-    <button @click="login">登陆</button>
+    <div :class="$style.form">
+      <van-field v-model="value" placeholder="请输入Access Token" />
+      <van-button @click="login" size="large" type="primary" :style="{margin: '10px auto'}">登陆</van-button>
+    </div>
   </div>
 </template>
 
 <script>
+import { Field, Button } from 'vant'
 import { mapActions } from 'vuex'
 export default {
   name: 'x-login',
@@ -13,6 +16,10 @@ export default {
     return {
       value: ''
     }
+  },
+  components: {
+    [Button.name]: Button,
+    [Field.name]: Field
   },
   methods: {
     ...mapActions(['userLogin']),
@@ -36,8 +43,12 @@ export default {
 .login{
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
-  align-items: center;
+  align-content: stretch;
+  align-items: stretch;
+}
+.form{
+  padding: 10px;
 }
 </style>

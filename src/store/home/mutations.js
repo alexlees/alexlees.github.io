@@ -12,7 +12,6 @@ export default {
     state.topics.push(...topics)
   },
   [UNSHIFT_TOPICS] (state, topics) {
-    console.log(topics)
     state.topics.unshift(...topics)
   },
   [SHIFT_TOPICS] (state, conut) {

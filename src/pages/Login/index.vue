@@ -1,12 +1,15 @@
 <template>
   <v-page>
-    <v-header>登陆</v-header>
+    <v-header title="登陆" @click-left="$router.back()">
+      <v-icon slot="left" icon="back" :size="20" color="#38f"></v-icon>
+    </v-header>
     <x-login></x-login>
   </v-page>
 </template>
 
 <script>
 import Page from '@/base/Page'
+import Icon from '@/base/Icon'
 import Header from '@/components/Header'
 import Login from './Login'
 export default {
@@ -14,7 +17,8 @@ export default {
   components: {
     [Page.name]: Page,
     [Header.name]: Header,
-    [Login.name]: Login
+    [Login.name]: Login,
+    [Icon.name]: Icon
   }
 }
 </script>

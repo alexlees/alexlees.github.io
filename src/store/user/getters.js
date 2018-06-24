@@ -17,5 +17,8 @@ export default {
     } else {
       return {avatar_url: '', loginname: ''}
     }
+  },
+  addLogo (state) {
+    return state.addLogo
   }
 }

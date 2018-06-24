@@ -36,17 +36,14 @@ export default {
     ...mapActions('category', ['getTopics']),
     onRefresh () {
       this.getTopics({tab: 'good'})
-      console.log(this.$store.state.category)
       setTimeout(() => {
         this.isLoading = false
       }, 1000)
     },
     scroll (e) {
-      console.log(e)
     }
   },
   created () {
-    console.log(this.good)
     if (this.good.length === 0) {
       this.onRefresh()
     }

@@ -33,7 +33,6 @@ export default {
     state.topic.is_collect = tag
   },
   [CALL_BACK] (state, path) {
-    console.log(path)
     if (path && typeof path === 'string') {
       app.$router.push(path)
     }

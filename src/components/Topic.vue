@@ -12,7 +12,7 @@
         <v-icon icon="attention"></v-icon>
         <span :class="$style.space">{{topic.visit_count}}</span>
       </div>
-      <div :class="$style.item" class="van-hairline--right">
+      <div :class="$style.item" class="van-hairline--right" @click="goReply">
         <v-icon icon="mark"></v-icon>
         <span :class="$style.space">{{topic.reply_count}}</span>
       </div>
@@ -74,6 +74,9 @@ export default {
     ...mapActions('topic', ['getTopic']),
     goTopic () {
       this.getTopic({id: this.topic.id, path: `/topic/${this.topic.id}`})
+    },
+    goReply () {
+      this.getTopic({id: this.topic.id, path: `/topic/${this.topic.id}/reply`})
     }
   }
 }
@@ -100,6 +103,10 @@ export default {
   padding: 20px;
   line-height: 120%;
 }
+.content:active{
+  background-color: #eeeeee;
+  color: #888;
+}
 .footer{
   height: 46px;
   display: flex;
@@ -112,6 +119,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.item:active{
+  background-color: #eeeeee;
+  color: #888;
 }
 .space{
   text-indent: 5px;

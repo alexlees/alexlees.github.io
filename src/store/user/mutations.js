@@ -8,6 +8,7 @@ export const USER_LOGIN = 'USER_LOGIN'
 export const USER_LOGOUT = 'USER_LOGOUT'
 export const ERR = 'ERR'
 export const LOADING = 'LOADING'
+export const SET_ADD_LOGO = 'SET_ADD_LOGO'
 
 export default {
   [NEED_LOGIN] () {
@@ -32,10 +33,14 @@ export default {
     state.accesstoken = accesstoken
     store.set('token', accesstoken)
   },
-  [LOADING] (state, tag) {
-    if (tag) {
+  [LOADING] (state, flag) {
+    if (flag) {
       // TODO
     }
-    state.loading = tag
+    state.loading = flag
+  },
+  [SET_ADD_LOGO] (state, flag) {
+    state.addLogo = flag
+    store.set('addLogo', flag)
   }
 }

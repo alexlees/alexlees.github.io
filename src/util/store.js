@@ -1,24 +1,40 @@
 export default {
   set (key, value) {
-    if (key && value) {
+    try {
       const str = JSON.stringify(value)
       console.assert(str)
       return localStorage.setItem(key, str)
+    } catch (error) {
+      console.error('key', key)
+      console.error(error)
     }
   },
   get (key) {
-    if (key) {
-      let res = localStorage.getItem(key)
-      console.log(res)
+    if (!key) {
+      return null
+    }
+    try {
+      const res = localStorage.getItem(key)
       return JSON.parse(res)
+    } catch (error) {
+      console.error('key', key)
+      console.error(error)
     }
   },
   clear () {
-    localStorage.clear()
+    try {
+      return localStorage.clear()
+    } catch (error) {
+      console.error(error)
+    }
   },
   remove (key) {
     if (key) {
-      return localStorage.removeItem(key)
+      try {
+        return localStorage.clear()
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 }

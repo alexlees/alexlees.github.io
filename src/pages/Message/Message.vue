@@ -39,7 +39,6 @@ export default {
         return this.$store.state.message.loading
       },
       set (v) {
-        console.log(v)
       }
     }
   },

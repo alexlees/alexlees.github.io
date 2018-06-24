@@ -4,8 +4,8 @@
       <v-avatar :avatar="user.avatar_url" :size="80"></v-avatar>
     </div>
     <van-cell-group>
-      <van-cell title="更多信息" is-link clickable @click="$router.push(`/user/${user.loginname}`)"/>
-      <van-switch-cell v-model="checked" title="评论加尾" />
+      <van-cell title="更多信息" is-link clickable @click="goInfo"/>
+      <van-switch-cell v-model="addLogo" title="评论加尾" />
     </van-cell-group>
     <div :class="$style.action">
       <van-button type="primary" size="large" v-if="!token" @click="$router.push('/login')">登陆</van-button>
@@ -41,6 +41,14 @@ export default {
       return {
         backgroundImage: `url(${bac})`
       }
+    },
+    addLogo: {
+      get () {
+        return this.$store.state.user.addLogo
+      },
+      set (v) {
+        this.$store.commit('SET_ADD_LOGO', v)
+      }
     }
   },
   methods: {
@@ -49,6 +57,13 @@ export default {
       Dialog.confirm({
         title: '确定注销？'
       }).then(this.userLogout)
+    },
+    goInfo () {
+      if (!this.token) {
+        this.$toast.fail('未登录!')
+      } else {
+        this.$router.push(`/user/${this.user.loginname}`)
+      }
     }
   }
 }
