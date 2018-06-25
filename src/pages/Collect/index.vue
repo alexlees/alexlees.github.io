@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 import Header from '../../components/Header'
 import Icon from '../../base/Icon'
 import Collect from './Collect'
@@ -20,18 +18,6 @@ export default {
     [Header.name]: Header,
     [Icon.name]: Icon,
     [Collect.name]: Collect
-  },
-  methods: {
-    ...mapActions('author', ['getCollect']),
-    initCollects () {
-      this.getCollect({loginname: this.$route.params.name})
-    }
-  },
-  created () {
-    this.initCollects()
-  },
-  activated () {
-    this.initCollects()
   }
 }
 </script>

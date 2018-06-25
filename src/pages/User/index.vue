@@ -54,13 +54,16 @@ export default {
         this.$router.push(`${this.$route.fullPath}/collect`)
       } else {
         this.show = false
-        this.$toast.fail('暂未实现')
+        window.location.href = `https://github.com/${this.$store.state.author.author.info.githubUsername}`
       }
     }
   },
-  beforeRouteUpdate (v) {
-    console.log(v)
-    // this.getUser(v.params.name)
+  beforeRouteUpdate (to, from, next) {
+    if (to.params.name !== from.params.name) {
+      console.log(to, from)
+      this.getUser({loginname: to.params.name})
+    }
+    next()
   }
 }
 </script>

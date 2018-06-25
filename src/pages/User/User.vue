@@ -8,7 +8,9 @@
       <v-tab>最近评论</v-tab>
     </v-tabs>
     <div :class="$style.flex">
-      <component :is="is"></component>
+      <van-pull-refresh v-model="loading" @refresh="onRefresh">
+        <component :is="is"></component>
+      </van-pull-refresh>
     </div>
   </div>
 </template>
@@ -38,6 +40,14 @@ export default {
   },
   computed: {
     ...mapGetters('author', ['info']),
+    loading: {
+      get () {
+        return this.$store.state.author.loading
+      },
+      set (v) {
+        console.log(v)
+      }
+    },
     style () {
       return {
         backgroundImage: `url(${bac})`
@@ -51,17 +61,18 @@ export default {
     ...mapActions('author', ['getUser']),
     onRefresh () {
       this.getUser({loginname: this.$route.params.name})
+    },
+    shouldRefresh (falg) {
+      if (falg) {
+        return this.onRefresh()
+      }
+      if (this.info.loginname !== this.$route.params.name) {
+        this.onRefresh()
+      }
     }
   },
   created () {
-    if (this.info.loginname !== this.$route.params.name) {
-      this.onRefresh()
-    }
-  },
-  activated () {
-    if (this.info.loginname !== this.$route.params.name) {
-      this.onRefresh()
-    }
+    this.shouldRefresh()
   }
 }
 </script>

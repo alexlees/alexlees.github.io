@@ -29,14 +29,17 @@ export default {
       return
     }
     try {
+      commit(SET_LOADING, {flag: true})
       const res = await fetchUserTopicCollect({loginname})
       if (res.success) {
         commit(SET_AUTHOR_COLLECTS, res)
       } else {
         commit(SET_ERR, {flag: true, msg: res.error_msg})
       }
+      commit(SET_LOADING, {flag: false})
     } catch (error) {
       commit(SET_ERR, {flag: true, msg: error})
+      commit(SET_LOADING, {flag: false})
     }
   }
 }
