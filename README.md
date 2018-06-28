@@ -1,21 +1,38 @@
-# pwacnode
+# CNode.js 社区
 
-> A Vue.js project
+> 一个令人愉快的 CNode.js 社区 PWA 版
 
-## Build Setup
+## 技术栈
 
-``` bash
-# install dependencies
-npm install
+- vue vue-router vuex
+- animate.css 路由动画
+- dayjs 格式化时间
+- github-markdown-css
+- vant 基础组件库
+- Fetch 数据获取
+- 基于[CNode社区API](https://cnodejs.org/api)
 
-# serve with hot reload at localhost:8080
-npm run dev
+### [预览](https://alexlees.github.io)
 
-# build for production with minification
-npm run build
+![1529414402.png](https://dn-cnode.qbox.me/FulhwtGEMQRqpziz94hezPCl_Lb0)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+> 扫码查看，添加到屏幕，全屏食用更佳
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### 功能
+
+- [x] 主题浏览
+- [x] 登陆、收藏
+- [x] 评论、点赞
+- [x] 消息
+- [x] 用户信息
+
+### TODO
+
+- [ ] 更好的下拉刷新
+- [ ] 优化布局结构
+- [ ] 点击查看图片
+
+### 后记
+
+- 基本能用 后续会继续更新
+- 欢迎使用 欢迎star

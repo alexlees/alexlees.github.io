@@ -1,7 +1,7 @@
 {
   "name": "pwacnode",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "一个CNode.js社区",
   "author": "alexlees <18323965465@163.com>",
   "private": true,
   "scripts": {

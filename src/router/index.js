@@ -12,6 +12,7 @@ const Login = () => import('../pages/Login')
 const Reply = () => import('../pages/Reply')
 // const Image = () => import('../pages/Image')
 const Collect = () => import('../pages/Collect')
+const NotFound = () => import('../pages/NotFound')
 
 Vue.use(Router)
 export default new Router({
@@ -66,6 +67,10 @@ export default new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '*',
+      component: NotFound
     }
   ]
 })

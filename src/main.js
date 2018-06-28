@@ -8,6 +8,8 @@ import 'animate.css'
 import App from './App'
 import router from './router'
 import store from './store'
+import Icon from './base/Icon'
+
 // reset.css
 import './assets/reset.css'
 // 全局组件
@@ -15,6 +17,7 @@ import './assets/reset.css'
 Vue.use(PullRefresh)
 Vue.use(Toast)
 Vue.use(Actionsheet)
+Vue.component(Icon.name, Icon)
 Day.locale('zh-cn')
 Day.extend(relativeTime)
 
