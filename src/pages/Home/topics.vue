@@ -37,7 +37,6 @@ export default {
   },
   created () {
     if (this.topics.length === 0) {
-      // 初始化
       this.getTopics(true)
     }
   }

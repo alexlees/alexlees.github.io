@@ -4,7 +4,7 @@
       <v-tag :tag="tag" :type="type"></v-tag>
       <span>{{topic.create_at | time}}</span>
     </v-author>
-    <div @click="goTopic" :class="$style.content">
+    <div @click="$router.push(`/topic/${topic.id}`)" :class="$style.content">
       {{topic.title}}
     </div>
     <div :class="$style.footer" class="van-hairline--top">
@@ -12,7 +12,7 @@
         <v-icon icon="attention"></v-icon>
         <span :class="$style.space">{{topic.visit_count}}</span>
       </div>
-      <div :class="$style.item" class="van-hairline--right" @click="goReply">
+      <div :class="$style.item" class="van-hairline--right" @click="$router.push(`/topic/${topic.id}/reply`)">
         <v-icon icon="mark"></v-icon>
         <span :class="$style.space">{{topic.reply_count}}</span>
       </div>
@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import Author from './Author'
 import Icon from '../base/Icon'
 import Tag from '../base/Tag'
@@ -68,15 +67,6 @@ export default {
         }
         return '未分类'
       }
-    }
-  },
-  methods: {
-    ...mapActions('topic', ['getTopic']),
-    goTopic () {
-      this.getTopic({id: this.topic.id, path: `/topic/${this.topic.id}`})
-    },
-    goReply () {
-      this.getTopic({id: this.topic.id, path: `/topic/${this.topic.id}/reply`})
     }
   }
 }

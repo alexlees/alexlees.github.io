@@ -1,9 +1,9 @@
 /* eslint camelcase: 0 */
-import { SET_ID, SET_TOPIC, LOADING, ERR, SET_COLLECT, SET_UP_REPLY, NEED_LOGIN, CALL_BACK } from './mutations'
+import { SET_ID, SET_TOPIC, LOADING, ERR, SET_COLLECT, SET_UP_REPLY, NEED_LOGIN } from './mutations'
 import { fetchTopic, postTopicCollect, postTopicDeCollect, postUpReply } from '../../util/api'
 
 export default {
-  async getTopic ({ commit, state, rootGetters }, {id, path}) {
+  async getTopic ({ commit, state, rootGetters }, {id}) {
     const accesstoken = rootGetters.token
     commit(SET_ID, id)
     try {
@@ -12,7 +12,6 @@ export default {
       if (res.success) {
         setTimeout(() => {
           commit(SET_TOPIC, res.data)
-          commit(CALL_BACK, path)
           commit(LOADING, false)
         }, 200)
       } else {

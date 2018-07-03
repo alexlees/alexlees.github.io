@@ -15,6 +15,8 @@
 
 <script>
 import { mapActions, mapMutations } from 'vuex'
+
+import store from '../../store'
 import Page from '@/base/Page'
 import Header from './Header'
 import Topic from './Topic'
@@ -42,7 +44,6 @@ export default {
     ...mapActions('topic', ['getTopic', 'deleteTopic']),
     ...mapMutations('topic', ['LOADING']),
     onRefresh () {
-      console.log('onRefresh')
       this.getTopic({id: this.$route.params.id})
     },
     goReply () {
@@ -52,12 +53,10 @@ export default {
   destroyed () {
     this.deleteTopic()
   },
-  created () {
-    if (this.topic && this.topic.id === this.$route.params.id) {
-      //
-    } else {
-      this.onRefresh()
-    }
+  // 在导航完成前获取数据
+  async beforeRouteEnter (to, from, next) {
+    await store.dispatch('topic/getTopic', {id: to.params.id})
+    next()
   }
 }
 </script>
