@@ -60,7 +60,10 @@ export default {
     },
     goInfo () {
       if (!this.token) {
-        this.$toast.fail('未登录!')
+        this.$toast.fail({
+          message: '未登录!',
+          duration: 500
+        })
       } else {
         this.$router.push(`/user/${this.user.loginname}`)
       }

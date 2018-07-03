@@ -206,6 +206,17 @@ export async function postTopicDeCollect (params = {}) {
     console.error(error)
   }
 }
+export async function postMarkMessage (params = {}) {
+  const URL = toUrl(API.POST_MARK_ONE_MESSAGE, mergeParams(API.POST_MARK_ONE_MESSAGE, params))
+  try {
+    const res = await fetch(URL.url, {
+      method: API.POST_MARK_ONE_MESSAGE.methods
+    })
+    return await res.json()
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export async function fetchUserTopicCollect (params = {}) {
   const URL = toUrl(API.USER_TOPIC_COLLECT, mergeParams(API.USER_TOPIC_COLLECT, params))

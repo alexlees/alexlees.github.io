@@ -50,9 +50,6 @@ export default {
       this.$router.push(this.$route.fullPath + '/reply')
     }
   },
-  destroyed () {
-    this.deleteTopic()
-  },
   // 在导航完成前获取数据
   async beforeRouteEnter (to, from, next) {
     await store.dispatch('topic/getTopic', {id: to.params.id})

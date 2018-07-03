@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.author" >
-    <div :class="$style.name" @click="goUser">
+    <div :class="$style.name" @click="$router.push(`/user/${author.loginname}`)">
       <v-avatar :avatar="author.avatar_url"></v-avatar>
       <span>{{author.loginname}}</span>
     </div>
@@ -12,7 +12,6 @@
 
 <script>
 import Avatar from './Avatar'
-import { mapActions } from 'vuex'
 export default {
   name: 'v-author',
   props: {
@@ -23,12 +22,6 @@ export default {
   },
   components: {
     [Avatar.name]: Avatar
-  },
-  methods: {
-    ...mapActions('author', ['getUser']),
-    goUser (e) {
-      this.getUser({loginname: this.author.loginname, path: `/user/${this.author.loginname}`})
-    }
   }
 }
 </script>

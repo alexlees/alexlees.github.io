@@ -7,9 +7,6 @@ export const NEED_ROUTER = 'NEED_ROUTER'
 
 export default {
   [SET_ERR] (state, {flag, msg}) {
-    if (flag) {
-      app.$toast.fail(msg)
-    }
     state.err = flag
   },
   [SET_AUTHOR_INFO] (state, {data}) {
@@ -23,14 +20,6 @@ export default {
     }
   },
   [SET_LOADING] (state, {flag}) {
-    if (flag) {
-      app.$toast.loading({
-        mask: true,
-        message: '加载中...'
-      })
-    } else {
-      app.$toast.clear()
-    }
     state.loading = flag
   },
   NEED_ROUTER (state, path) {

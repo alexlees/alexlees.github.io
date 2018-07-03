@@ -3,14 +3,13 @@
     <v-author :author="topic.author">
       <span>{{topic.last_reply_at | time}}</span>
     </v-author>
-    <div @click="goTopic" :class="$style.content">
+    <div @click="$router.push(`/topic/${topic.id}`)" :class="$style.content">
       {{topic.title}}
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import Author from '@/components/Author'
 
 export default {
@@ -23,12 +22,6 @@ export default {
   },
   components: {
     [Author.name]: Author
-  },
-  methods: {
-    ...mapActions('topic', ['getTopic']),
-    goTopic () {
-      this.getTopic({id: this.topic.id, path: `/topic/${this.topic.id}`})
-    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-body" v-html="content" @click="click"></div>
+  <div class="markdown-body" v-html="content" @click="click" ref="markdown"></div>
 </template>
 
 <script>
@@ -13,7 +13,8 @@ export default {
   methods: {
     click (e) {
       if (e.target instanceof HTMLImageElement) {
-        this.$emit('click-image')
+        const images = [...this.$refs.markdown.querySelectorAll('img')]
+        this.$emit('click-image', images, e.target)
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.topic">
     <h3 :class="$style.title">{{topic.title}}</h3>
-    <v-markdown :content="topic.content" @click-image="goImage"></v-markdown>
+    <v-markdown :content="topic.content" @click-image="showImages"></v-markdown>
     <footer :class="$style.time" @click="changeTime">
       {{text}}:{{currentTime | time}}
     </footer>
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+/* global PhotoSwipeUI_Default:true PhotoSwipe: true */
 import { mapGetters } from 'vuex'
 import MarkDown from '@/base/MarkDown'
 
@@ -19,7 +20,8 @@ export default {
   },
   data () {
     return {
-      createTime: true
+      createTime: true,
+      pswpElement: null
     }
   },
   computed: {
@@ -41,9 +43,28 @@ export default {
     changeTime () {
       this.createTime = !this.createTime
     },
-    goImage () {
-      // this.$router.push(`${this.$route.fullPath}/image`)
-      this.$toast.fail('图片功能待完成')
+    showImages (images, target) {
+      if (!this.pswpElement) {
+        this.pswpElement = document.getElementById('pswp')
+      }
+      let index = 1
+
+      const items = images.map((image, i) => {
+        if (target === image) {
+          index = i
+        }
+        return {
+          src: image.src,
+          w: window.screen.availWidth,
+          h: image.height * (window.screen.availWidth / image.width)
+        }
+      })
+      const options = {
+        index,
+        loop: false
+      }
+      const gallery = new PhotoSwipe(this.pswpElement, PhotoSwipeUI_Default, items, options)
+      gallery.init()
     }
   }
 }

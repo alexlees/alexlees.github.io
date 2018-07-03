@@ -3,7 +3,7 @@
     <v-author :author="topic.author">
       <v-tag :tag="tag" :type="type"></v-tag>
     </v-author>
-    <v-markdown @click.native="goTopic" :class="$style.content" :content="topic.reply.content">
+    <v-markdown @click.native="$router.push(`/topic/${topic.topic.id}/reply`)" :class="$style.content" :content="topic.reply.content">
     </v-markdown>
     <div :class="$style.footer" class="van-hairline--top">
       <div :class="$style.item" class="van-hairline--right">
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import Author from '@/components/Author'
 import Icon from '@/base/Icon'
 import Tag from '@/base/Tag'
@@ -50,12 +49,6 @@ export default {
   computed: {
     tag () {
       return this.topic.type === 'at' ? '@' : '回复'
-    }
-  },
-  methods: {
-    ...mapActions('topic', ['getTopic']),
-    goTopic () {
-      this.getTopic({id: this.topic.topic.id, path: `/topic/${this.topic.topic.id}`})
     }
   }
 }

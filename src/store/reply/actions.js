@@ -1,6 +1,6 @@
 /* eslint camelcase: 0 */
-import { SET_REPLY, SET_ERR } from './mutations'
 import { postReply } from '../../util/api'
+import { SUCCESS_TOAST, ERR_TOAST } from '../user/mutations'
 
 export default {
   async reply ({commit, rootGetters}, {content, topic_id, reply_id}) {
@@ -15,12 +15,12 @@ export default {
       }
       const res = await postReply({accesstoken, content, reply_id, topic_id})
       if (res.success) {
-        commit(SET_REPLY, res)
+        commit(SUCCESS_TOAST, {message: '评论成功'}, {root: true})
       } else {
-        commit(SET_ERR, res.error_msg)
+        commit(ERR_TOAST, {message: res.error_msg}, {root: true})
       }
     } catch (error) {
-      commit(SET_ERR, error)
+      commit(ERR_TOAST, {message: '未知错误'}, {root: true})
     }
   }
 }

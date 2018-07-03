@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.Reply" class="van-hairline--top">
     <input type="text" :class="$style.input" placeholder="快来评论" v-model="value">
-    <button :class="$style.btn" @click="postReply">发表</button>
+    <button :class="$style.btn" @click="postReply">{{text}}</button>
   </div>
 </template>
 
@@ -17,8 +17,21 @@ export default {
   methods: {
     ...mapActions('reply', ['reply']),
     postReply () {
-      this.reply({content: this.value, topic_id: this.$route.params.id})
-      this.value = ''
+      if (this.value) {
+        this.reply({content: this.value, topic_id: this.$route.params.id})
+        this.value = ''
+      } else {
+        this.$router.push(`/topic/${this.$route.params.id}`)
+      }
+    }
+  },
+  computed: {
+    text () {
+      if (this.value) {
+        return '发表评论'
+      } else {
+        return '去到主题'
+      }
     }
   }
 }
@@ -56,7 +69,7 @@ export default {
   appearance: none;
   border: none;
   position: relative;
-  width: 60px;
+  min-width: 80px;
   height: 30px;
 
   display: inline-flex;

@@ -15,6 +15,8 @@
 <script>
 import { mapActions } from 'vuex'
 import { Actionsheet } from 'vant'
+
+import store from '../../store'
 import Page from '@/base/Page'
 import Header from '@/components/Header'
 import User from './User'
@@ -58,11 +60,18 @@ export default {
       }
     }
   },
-  beforeRouteUpdate (to, from, next) {
+  // 更新路由获取用户数据
+  async beforeRouteUpdate (to, from, next) {
     if (to.params.name !== from.params.name) {
-      console.log(to, from)
-      this.getUser({loginname: to.params.name})
+      await this.getUser({loginname: to.params.name})
+      next()
+    } else {
+      next()
     }
+  },
+  // 在导航完成前获取数据
+  async beforeRouteEnter (to, from, next) {
+    await store.dispatch('author/getUser', {loginname: to.params.name})
     next()
   }
 }

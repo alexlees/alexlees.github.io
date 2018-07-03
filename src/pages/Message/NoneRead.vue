@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="none.length === 0" :class="$style.center">
-      没有消息下拉刷新试试
+      没有消息？看看已读消息吧！
     </div>
     <div v-else>
       <x-topic v-for="(item, index) in none" :topic="item" :key="index"></x-topic>
