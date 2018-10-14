@@ -1,6 +1,9 @@
 # CNode.js 社区
 
 > 一个令人愉快的 CNode.js 社区 PWA 版
+## Notice
+
+> 该项目不再维护，请查看[MaterialCNode](https://github.com/alexlees/MaterialCNode)项目
 
 ## 技术栈
 
