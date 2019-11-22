@@ -14,7 +14,7 @@
     "animate.css": "^3.6.1",
     "dayjs": "^1.6.9",
     "github-markdown-css": "^2.10.0",
-    "vant": "^1.1.8",
+    "vant": "^2.1.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
